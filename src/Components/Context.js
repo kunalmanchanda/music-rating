@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import data from '../data'
+
 export const Context = React.createContext();
 
 // const URL = 'http://api.musixmatch.com/ws/1.1/tracking.url.get?apikey=1ed3a87eafb5901da54301970155ff73&format=json&domain=http://localhost:3000/'
@@ -7,12 +9,7 @@ export const Context = React.createContext();
 
 const ContextProvider = (props) => {
 
-    const [trackList, setTrackList] = useState([
-        {track_name: 'abc', id: 1},
-        {track_name: '123', id: 2},
-        {track_name: 'qwe', id: 3},
-        {track_name: '678', id: 4}
-    ]);
+    const [trackList, setTrackList] = useState(data);
 
     const fetchData = async () => {
         try {

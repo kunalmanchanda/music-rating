@@ -5,6 +5,7 @@ import './App.css'
 import ContextProvider from './Components/Context'
 import Navbar from './Components/Layout/Navbar'
 import Index from './Components/Layout/Index'
+import Login from './Components/Layout/Login'
 
 const App = () => {
   return (
@@ -14,7 +15,8 @@ const App = () => {
         <Navbar/>
         <div className="container">
           <Switch>
-            <Route exact patch="/" component = {Index}></Route>
+            <Route exact path="/" component = {Index}></Route>
+            <Route exact path="/login" component = {Login}></Route>
           </Switch>
         </div>
       </ContextProvider>

@@ -1,21 +1,21 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid';
+
+import Track from './Track'
 
 const Tracks = (props) => {
-    // console.log(props.track)
+    console.log(props)
     const {track} = props
     return (
-        <div>
-            tracks
+        <>
             {
                 track.map(t => {
                     return (
-                        <h2 key = {t.id}>
-                            {t.track_name}
-                        </h2>
+                        <Track key= {uuidv4()} {...t}/>
                     )
                 })
             }
-        </div>
+        </>
     )
 }
 
