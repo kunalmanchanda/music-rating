@@ -3,11 +3,15 @@ import Tracks from '../tracks/Tracks'
 import { Context } from '../Context'
 
 const Index = () => {
-    const [track, setTrack] = useContext(Context)
-    // console.log(track)
+    const [trackList, setTrackList, loading, setLoading] = useContext(Context)
+    // console.log(loading, trackList)
     return (
         <>
-            <Tracks track={track}/>            
+        {
+            loading ? (
+            <Tracks track={trackList}/>            
+            ) : (loading)
+        }
         </>
     )
 }

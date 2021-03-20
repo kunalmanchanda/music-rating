@@ -22,7 +22,7 @@ h1 {
   gap: 1rem;
 }
 
-.button__wrapper button {
+.button__wrapper > button {
   border: none;
   background-color: rgb(45, 200, 211);
   font-weight: bold;
@@ -35,11 +35,11 @@ h1 {
   cursor: pointer;
 }
 
-.button__wrapper button:hover {
+.button__wrapper > button:hover {
   background-color: rgb(35, 72, 141);
 }
 
-.button__wrapper button:focus {
+.button__wrapper > button:focus {
   box-shadow: 0 0 0 3px rgb(70, 21, 97);
 }
 

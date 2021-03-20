@@ -2,16 +2,16 @@ import React, { useState } from 'react'
 import './track.css'
 
 
-const Track = ({title, artist, year, img_url}) => {
-    const [count, setCount] = useState(10);
-
+const Track = ({track_name, album_name, artist_name, track_rating, track_share_url}) => {
+    const [count, setCount] = useState(track_rating);
+    console.log(track_name, album_name, artist_name, track_rating)
     return (
         <>
         <div className="tracks">
             <div>
-                <h2>{title}</h2>
-                <p>{artist}</p>
-                <p>{year}</p> 
+                <h2>{track_name}</h2>
+                <p>{artist_name}</p>
+                <p>{album_name}</p> 
             </div>
             <div className="ratings">
                 <h1 className={count > 0 ? "positive" : count < 0 ? "negative" : null}>

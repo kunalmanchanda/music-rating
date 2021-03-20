@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
+
 import axios from 'axios'
-import data from '../data'
+import dotenv from  'dotenv';
+dotenv.config()
 
 export const Context = React.createContext();
 
@@ -8,16 +10,21 @@ export const Context = React.createContext();
 
 
 const ContextProvider = (props) => {
-
-    const [trackList, setTrackList] = useState(data);
-
+    const [trackList, setTrackList] = useState([]);
+    const [loading, setLoading] = useState(false);
+    
+    
     const fetchData = async () => {
         try {
-            const response = await axios.get(`http://api.musixmatch.com/ws/1.1/chart.tracks.get?
-                page=1&page_size=10&country=us&f_has_lyrics=1&
-                apikey=${process.env.API_KEY}`
+            const response = await axios.get(`http://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=20&country=us&f_has_lyrics=1&apikey=0451e46178495e97a544962292b809ac`
+                // `http://api.musixmatch.com/ws/1.1/chart.tracks.get?
+                // page=1&page_size=21&country=us&f_has_lyrics=1&
+                // apikey=1ed3a87eafb5901da54301970155ff73`
             );
-            console.log(response)
+            // console.log(response.data.message.body.track_list);
+            const res = await response.data.message.body.track_list
+            setTrackList(res)
+            setLoading(true)
         }
         catch(error) {
             console.log(error);
@@ -29,7 +36,7 @@ const ContextProvider = (props) => {
     }, [])
 
     return (
-        <Context.Provider value={[trackList, setTrackList]}>
+        <Context.Provider value={[trackList, setTrackList, loading, setLoading]}>
             {props.children}
         </Context.Provider>
     )
